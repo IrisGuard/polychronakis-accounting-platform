@@ -157,13 +157,13 @@
         }
 
         .hero-card {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             text-align: center;
             background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(248,250,252,0.95));
             backdrop-filter: blur(25px);
             border-radius: 28px;
-            padding: 4rem 3rem;
+            padding: 5rem 4rem;
             box-shadow: 0 25px 50px rgba(31, 38, 135, 0.12);
             border: 2px solid #667eea; /* blue border for card style */
             position: relative;
@@ -172,37 +172,41 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 400px;
+            min-height: 500px;
         }
         
         .hero-card .hero-subtitle {
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             color: #1e293b;
-            margin-bottom: 2.5rem;
-            font-weight: 700;
-            line-height: 1.3;
-            letter-spacing: -0.01em;
+            margin-bottom: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
         }
         
         .hero-card .hero-description {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: #4b5563;
             line-height: 1.8;
-            max-width: 800px;
+            max-width: 900px;
             font-weight: 500;
             letter-spacing: 0.005em;
             margin: 0 auto;
         }
         
         .hero-card .hero-description p {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
         
         .hero-card .hero-description p:last-child {
             margin-bottom: 0;
             font-weight: 600;
             color: #667eea;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .btn-primary {
@@ -322,7 +326,7 @@
             border-radius: 24px;
             padding: 2.5rem;
             box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-            border: 1px solid rgba(255,255,255,0.4);
+            border: 2px solid #667eea; /* blue border to match hero card */
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
@@ -516,12 +520,17 @@
         }
         
         @media (max-width: 1024px) {
+            .hero-card {
+                padding: 4rem 3rem;
+                min-height: 450px;
+            }
+            
             .hero-card .hero-subtitle {
-                font-size: 1.9rem;
+                font-size: 2rem;
             }
             
             .hero-card .hero-description {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
             }
             
             .section {
@@ -540,16 +549,16 @@
             }
             
             .hero-card {
-                padding: 3rem 2rem;
-                min-height: 350px;
+                padding: 3.5rem 2.5rem;
+                min-height: 400px;
             }
             
             .hero-card .hero-subtitle {
-                font-size: 1.6rem;
+                font-size: 1.8rem;
             }
             
             .hero-card .hero-description {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
             }
             
             .services-grid {
@@ -575,16 +584,16 @@
             }
             
             .hero-card {
-                padding: 2.5rem 1.5rem;
-                min-height: 300px;
+                padding: 3rem 2rem;
+                min-height: 350px;
             }
             
             .hero-card .hero-subtitle {
-                font-size: 1.4rem;
+                font-size: 1.6rem;
             }
             
             .hero-card .hero-description {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
             
             .stats-grid {
@@ -654,12 +663,12 @@
             return (
                 <section className="hero-section">
                     <div className="hero-card">
-                        <h2 className="hero-subtitle">Λογιστικές & Φοροτεχνικές Υπηρεσίες με 30+ Χρόνια Εμπειρίας</h2>
+                        <h2 className="hero-subtitle">Αξιόπιστες Λογιστικές & Φοροτεχνικές Υπηρεσίες για Επιχειρήσεις και Επαγγελματίες</h2>
                         <div className="hero-description">
-                            <p>Πάνω από 30 χρόνια εμπειρίας στην υποστήριξη επιχειρήσεων και επαγγελματιών.</p>
-                            <p>Παρέχουμε ολοκληρωμένες λογιστικές και φοροτεχνικές υπηρεσίες σε εταιρείες όλων των νομικών μορφών, με απόλυτη συνέπεια, υπευθυνότητα και εχεμύθεια.</p>
-                            <p>Στόχος μας είναι να διαχειριζόμαστε με ασφάλεια και ακρίβεια το οικονομικό σας πλαίσιο, ώστε να εστιάζετε στην ανάπτυξη της επιχείρησής σας.</p>
-                            <p>⚡ Η παρουσία μας είναι διακριτική, αλλά η δουλειά μας φαίνεται στα αποτελέσματα.</p>
+                            <p>Με πολυετή εμπειρία στον λογιστικό και φοροτεχνικό χώρο, παρέχουμε ολοκληρωμένη υποστήριξη σε Ανώνυμες Εταιρείες (Α.Ε.), Ε.Π.Ε., Ι.Κ.Ε., Ο.Ε., Ε.Ε. και Ατομικές Επιχειρήσεις.</p>
+                            <p>Οι υπηρεσίες μας περιλαμβάνουν τήρηση βιβλίων, σύνταξη δηλώσεων, μισθοδοσία, διαχείριση προσωπικού, ρυθμίσεις οφειλών, σύσταση εταιρειών, εξωδικαστικό μηχανισμό και εκπροσώπηση σε ΔΟΥ.</p>
+                            <p>Προσεγγίζουμε κάθε πελάτη με προσωπικό ενδιαφέρον και υψηλό επαγγελματισμό, εφαρμόζοντας σύγχρονες τεχνολογίες για να σας προσφέρουμε άμεσες και αποτελεσματικές λύσεις.</p>
+                            <p>📌 Δεν προσφέρουμε τυποποιημένες λύσεις — σχεδιάζουμε μαζί σας το κατάλληλο φορολογικό πλάνο για την επιχείρησή σας.</p>
                         </div>
                     </div>
                 </section>
