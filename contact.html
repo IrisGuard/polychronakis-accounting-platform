@@ -182,33 +182,7 @@
             z-index: 10;
         }
         
-        /* Page Header - Enhanced */
-        .page-header {
-            text-align: center;
-            margin-bottom: 4rem;
-            padding: 2rem 0;
-        }
-        
-        .page-title {
-            font-size: 3.5rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #1e293b, #334155, #475569);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.03em;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-        
-        .page-subtitle {
-            font-size: 1.3rem;
-            color: #64748b;
-            max-width: 700px;
-            margin: 0 auto;
-            font-weight: 500;
-            line-height: 1.6;
-        }
+        /* Page Header - Removed */
         
         /* Contact Section - Enhanced */
         .contact-section {
@@ -217,10 +191,10 @@
             border-radius: 28px;
             padding: 4rem;
             box-shadow: 0 25px 50px rgba(31, 38, 135, 0.12);
-            border: 1px solid rgba(255,255,255,0.4);
+            border: 2px solid #667eea; /* blue border to match other cards */
             position: relative;
             overflow: hidden;
-            margin-bottom: 3rem;
+            margin: 2rem 0 3rem;
         }
         
         .contact-section::before {
@@ -244,7 +218,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
-            margin-top: 3rem;
+            margin-top: 0;
         }
         
         .contact-info {
@@ -456,16 +430,13 @@
                 flex-direction: column;
             }
             
-            .page-title {
-                font-size: 2.5rem;
-            }
-            
             .contact-section {
                 padding: 3rem;
+                margin: 1rem 0 2rem;
             }
             
             .contact-form {
-            padding: 2.5rem;
+                padding: 2.5rem;
             }
         }
         
@@ -476,14 +447,11 @@
             
             .contact-section {
                 padding: 2rem;
+                margin: 0.5rem 0 1.5rem;
             }
             
             .contact-form {
                 padding: 2rem;
-            }
-            
-            .page-title {
-                font-size: 2rem;
             }
         }
     </style>
@@ -540,17 +508,7 @@
         // Contact Page Component
         function ContactPage() {
             return (
-                <>
-                    <div className="page-header">
-                        <h1 className="page-title">Επικοινωνία</h1>
-                        <p className="page-subtitle">
-                            Επικοινωνήστε μαζί μας για οποιαδήποτε ερώτηση ή συμβουλή. 
-                            Θα σας απαντήσουμε το συντομότερο δυνατό με εξειδικευμένη υποστήριξη.
-                        </p>
-                    </div>
-                    
-                    <ContactSection />
-                </>
+                <ContactSection />
             );
         }
         
