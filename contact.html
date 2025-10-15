@@ -465,7 +465,7 @@
             }
             
             .contact-form {
-                padding: 2.5rem;
+            padding: 2.5rem;
             }
         }
         
@@ -508,8 +508,8 @@
                     
                     <div className="main-content">
                         <ContactPage />
-                    </div>
-                    
+                        </div>
+                        
                     <Footer />
                 </div>
             );
@@ -556,6 +556,7 @@
         
         // Contact Section Component - Enhanced without admin panel
         function ContactSection() {
+            const [config, setConfig] = useState(null);
             const [formData, setFormData] = useState({
                 name: '',
                 email: '',
@@ -564,6 +565,13 @@
             });
             const [isSubmitting, setIsSubmitting] = useState(false);
             const [submitMessage, setSubmitMessage] = useState('');
+            
+            useEffect(() => {
+                fetch('./site-config.json', { cache: 'no-store' })
+                    .then(res => res.json())
+                    .then(data => setConfig(data))
+                    .catch(() => setConfig(null));
+            }, []);
             
             const handleInputChange = (e) => {
                 const { name, value } = e.target;
@@ -604,111 +612,114 @@
                     <div className="contact-grid">
                         <div className="contact-info">
                             <h3>Στοιχεία Επικοινωνίας</h3>
-                            
-                            <div className="contact-item">
+                    
+                    <div className="contact-item">
                                 <div className="contact-icon">📍</div>
-                                <div className="contact-details">
+                        <div className="contact-details">
                                     <h4>Διεύθυνση Γραφείου</h4>
-                                    <p>[Βάλε εδώ την τρέχουσα διεύθυνση γραφείου]</p>
-                                </div>
-                            </div>
-                            
-                            <div className="contact-item">
+                                    <p>{config?.address || '[Βάλε εδώ την τρέχουσα διεύθυνση γραφείου]'}</p>
+                        </div>
+                    </div>
+                    
+                    <div className="contact-item">
                                 <div className="contact-icon">📞</div>
-                                <div className="contact-details">
+                        <div className="contact-details">
                                     <h4>Τηλέφωνο</h4>
-                                    <p>[βάλε το επίσημο τηλέφωνο]</p>
-                                </div>
-                            </div>
-                            
-                            <div className="contact-item">
-                                <div className="contact-icon">✉️</div>
-                                <div className="contact-details">
+                                    <p>{config?.phone || '[βάλε το επίσημο τηλέφωνο]'}</p>
+                        </div>
+                    </div>
+                    
+                    <div className="contact-item">
+                        <div className="contact-icon">✉️</div>
+                        <div className="contact-details">
                                     <h4>Email</h4>
-                                    <p>[βάλε το επίσημο email]</p>
-                                </div>
-                            </div>
-                            
-                            <div className="contact-item">
-                                <div className="contact-icon">🕒</div>
-                                <div className="contact-details">
+                                    <p>{config?.email || '[βάλε το επίσημο email]'}</p>
+                        </div>
+                    </div>
+                    
+                    <div className="contact-item">
+                        <div className="contact-icon">🕒</div>
+                        <div className="contact-details">
                                     <h4>Ωράριο Λειτουργίας</h4>
-                                    <p>Δευτέρα – Παρασκευή: 09:00 – 18:00<br />
-                                    Σάββατο: 09:00 – 13:00</p>
-                                </div>
-                            </div>
+                                    <p>
+                                        {(config?.hours || ['Δευτέρα – Παρασκευή: 09:00 – 18:00','Σάββατο: 09:00 – 13:00']).map((h, i) => (
+                                            <span key={i}>{h}{i === (config?.hours?.length || 2) - 1 ? '' : <><br/></>}</span>
+                                        ))}
+                                    </p>
+                        </div>
+                    </div>
                         </div>
                         
                         <div className="contact-form">
                             <h3>Στείλτε μας μήνυμα</h3>
-                            <form onSubmit={handleSubmit}>
-                                <div className="form-group">
+                    <form onSubmit={handleSubmit}>
+                        <div className="form-group">
                                     <label htmlFor="name">Όνομα *</label>
-                                    <input
-                                        type="text"
+                            <input 
+                                type="text"
                                         id="name"
-                                        name="name"
-                                        value={formData.name}
-                                        onChange={handleInputChange}
-                                        required
+                                name="name"
+                                value={formData.name}
+                                onChange={handleInputChange}
+                                required
                                         placeholder="Το πλήρες όνομά σας"
-                                    />
-                                </div>
-                                
-                                <div className="form-group">
+                            />
+                        </div>
+                        
+                        <div className="form-group">
                                     <label htmlFor="email">Email *</label>
-                                    <input
-                                        type="email"
+                            <input 
+                                type="email"
                                         id="email"
-                                        name="email"
-                                        value={formData.email}
-                                        onChange={handleInputChange}
-                                        required
+                                name="email"
+                                value={formData.email}
+                                onChange={handleInputChange}
+                                required
                                         placeholder="το-email@σου.com"
-                                    />
-                                </div>
-                                
-                                <div className="form-group">
+                            />
+                        </div>
+                        
+                        <div className="form-group">
                                     <label htmlFor="subject">Θέμα *</label>
-                                    <input
-                                        type="text"
+                            <input 
+                                type="text"
                                         id="subject"
-                                        name="subject"
-                                        value={formData.subject}
-                                        onChange={handleInputChange}
-                                        required
+                                name="subject"
+                                value={formData.subject}
+                                onChange={handleInputChange}
+                                required
                                         placeholder="Περιγράψτε το θέμα του μηνύματός σας"
-                                    />
-                                </div>
-                                
-                                <div className="form-group">
+                            />
+                        </div>
+                        
+                        <div className="form-group">
                                     <label htmlFor="message">Μήνυμα *</label>
-                                    <textarea
+                            <textarea 
                                         id="message"
-                                        name="message"
-                                        value={formData.message}
-                                        onChange={handleInputChange}
-                                        required
+                                name="message"
+                                value={formData.message}
+                                onChange={handleInputChange}
+                                required
                                         placeholder="Γράψτε το μήνυμά σας εδώ..."
-                                    />
-                                </div>
-                                
-                                <button 
-                                    type="submit" 
+                            />
+                        </div>
+                        
+                        <button 
+                            type="submit" 
                                     className="submit-btn"
                                     disabled={isSubmitting}
                                 >
                                     {isSubmitting ? 'Στέλνεται...' : 'Στείλε μήνυμα'}
-                                </button>
+                        </button>
                                 
                                 {submitMessage && (
-                                    <div className="success-message">
+                        <div className="success-message">
                                         {submitMessage}
-                                    </div>
-                                )}
+                        </div>
+                    )}
                             </form>
                         </div>
-                    </div>
+                        </div>
                 </section>
             );
         }
@@ -730,12 +741,12 @@
                             <p>Τηλ.: [τηλέφωνο]</p>
                             <p>Email: [email]</p>
                             <p>Διεύθυνση: [διεύθυνση γραφείου]</p>
-                        </div>
+                    </div>
                         <div className="footer-section">
                             <h3>Ωράριο Λειτουργίας</h3>
                             <p>Δευτέρα – Παρασκευή: 09:00 – 18:00</p>
                             <p>Σάββατο: 09:00 – 13:00</p>
-                        </div>
+                </div>
                     </div>
                     <div className="footer-bottom">
                         <p>&copy; 2025 Λογιστικό Γραφείο Νίκος Πολυχρονάκης. Όλα τα δικαιώματα διατηρούνται.</p>
